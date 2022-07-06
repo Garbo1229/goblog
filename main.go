@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 var router = mux.NewRouter()

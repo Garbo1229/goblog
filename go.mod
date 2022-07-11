@@ -7,6 +7,7 @@ require (
 	github.com/gorilla/mux v1.8.0
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/stretchr/testify v1.8.0
+	github.com/thedevsaddam/govalidator v1.9.10 // indirect
 	gorm.io/driver/mysql v1.3.4
 	gorm.io/gorm v1.23.7
 )

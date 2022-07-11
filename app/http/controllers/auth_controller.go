@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"encoding/json"
+	"fmt"
 	"goblog/app/models/user"
 	"goblog/app/requests"
 	"goblog/pkg/view"
@@ -31,21 +33,18 @@ func (*AuthController) DoRegister(w http.ResponseWriter, r *http.Request) {
 	errs := requests.ValidateRegistrationForm(_user)
 
 	if len(errs) > 0 {
-		// 3. 表单不通过 —— 重新显示表单
-		view.RenderSimple(w, view.D{
-			"Errors": errs,
-			"User":   _user,
-		}, "auth.register")
+		// 3. 有错误发生，打印数据
+		data, _ := json.MarshalIndent(errs, "", "  ")
+		fmt.Fprint(w, string(data))
 	} else {
-		// _user.Create()
+		// 4. 验证成功，创建数据
+		_user.Create()
 
-		// if _user.ID > 0 {
-		//     fmt.Fprint(w, "插入成功，ID 为"+_user.GetStringID())
-		// } else {
-		//     w.WriteHeader(http.StatusInternalServerError)
-		//     fmt.Fprint(w, "注册失败，请联系管理员")
-		// }
+		if _user.ID > 0 {
+			http.Redirect(w, r, "/", http.StatusFound)
+		} else {
+			w.WriteHeader(http.StatusInternalServerError)
+			fmt.Fprint(w, "注册失败，请联系管理员")
+		}
 	}
-
-	// 5. 表单不通过 —— 重新显示表单
 }

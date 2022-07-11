@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"goblog/app/models/user"
 	"goblog/app/requests"
+	"goblog/pkg/session"
 	"goblog/pkg/view"
 	"net/http"
 )
@@ -15,6 +16,9 @@ type AuthController struct {
 
 // Register 注册页面
 func (*AuthController) Register(w http.ResponseWriter, r *http.Request) {
+
+	session.Put("uid", "1")
+
 	view.RenderSimple(w, view.D{}, "auth.register")
 }
 
@@ -47,4 +51,14 @@ func (*AuthController) DoRegister(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprint(w, "注册失败，请联系管理员")
 		}
 	}
+}
+
+// Login 显示登录表单
+func (*AuthController) Login(w http.ResponseWriter, r *http.Request) {
+	view.RenderSimple(w, view.D{}, "auth.login")
+}
+
+// DoLogin 处理登录表单提交
+func (*AuthController) DoLogin(w http.ResponseWriter, r *http.Request) {
+	//
 }

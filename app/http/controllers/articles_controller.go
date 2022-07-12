@@ -39,7 +39,7 @@ func (*ArticlesController) Show(w http.ResponseWriter, r *http.Request) {
 		// ---  4. 读取成功，显示文章 ---
 		view.Render(w, view.D{
 			"Article": article,
-		}, "articles.show")
+		}, "articles.show", "articles._article_meta")
 	}
 }
 
@@ -56,11 +56,9 @@ func (*ArticlesController) Index(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "500 服务器内部错误")
 	} else {
 		// ---  2. 加载模板 ---
-
-		// 2.0 设置模板相对路径
 		view.Render(w, view.D{
 			"Articles": articles,
-		}, "articles.index")
+		}, "articles.index", "articles._article_meta")
 	}
 }
 

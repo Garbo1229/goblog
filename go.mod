@@ -10,6 +10,7 @@ require (
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/sessions v1.2.1 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
+	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/viper v1.12.0 // indirect
 	github.com/stretchr/testify v1.8.0
 	github.com/thedevsaddam/govalidator v1.9.10 // indirect

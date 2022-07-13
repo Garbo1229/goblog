@@ -17,7 +17,6 @@ import (
 var DB *gorm.DB
 
 // ConnectDB 初始化模型
-// ConnectDB 初始化模型
 func ConnectDB() *gorm.DB {
 
 	var err error

@@ -34,6 +34,7 @@ func GetByEmail(email string) (User, error) {
 	}
 	return user, nil
 }
+
 // All 获取所有用户数据
 func All() ([]User, error) {
 	var users []User
